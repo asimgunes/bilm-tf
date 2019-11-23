@@ -1,6 +1,6 @@
 
 import argparse
-
+import os
 import numpy as np
 
 from bilm.training import train, load_options_latest_checkpoint, load_vocab
