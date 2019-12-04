@@ -22,9 +22,8 @@ def main(args):
 
     options = {
      'bidirectional': True,
-
      'char_cnn': {'activation': 'relu',
-      'embedding': {'dim': 16},
+      'embedding': {'dim': args.size},
       'filters': [[1, 32],
        [2, 32],
        [3, 64],
@@ -66,14 +65,12 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    #parser.add_argument('--save_dir', help='Location of checkpoint files')
-    #parser.add_argument('--vocab_file', help='Vocabulary file')
-    #parser.add_argument('--train_prefix', help='Prefix for train files')
     parser.add_argument('folder', help='Training folder for biLM')
     parser.add_argument('--tokens', help='Token count to train', type=int)
     parser.add_argument('--checkpoint', help='Checkpoint folder for training data', default='checkpoint')
     parser.add_argument('--gpu', help='Number of GPU to use in the training', type=int, default=1)
     parser.add_argument('--epoch', help='Number epoch to traing', type=int, default=10)
+    parser.add_argument('--size', help='Embedding size', type=int, default=16)
 
     args = parser.parse_args()
     main(args)
